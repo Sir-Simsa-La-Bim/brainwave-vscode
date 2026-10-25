@@ -1,0 +1,54 @@
+{
+  "name": "brainwave-language",
+  "displayName": "Brainwave",
+  "description": "Editing support for the Brainwave algorithm description language.",
+  "version": "0.1.0",
+  "publisher": "brainwave-language",
+  "license": "MIT",
+  "engines": {
+    "vscode": "^1.85.0"
+  },
+  "categories": [
+    "Programming Languages",
+    "Snippets"
+  ],
+  "keywords": [
+    "brainwave",
+    "brainfuck",
+    "esoteric",
+    "language",
+    "syntax"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://example.invalid/brainwave-vscode"
+  },
+  "contributes": {
+    "languages": [
+      {
+        "id": "brainwave",
+        "aliases": [
+          "Brainwave",
+          "brainwave"
+        ],
+        "extensions": [
+          ".brnw"
+        ],
+        "configuration": "./language-configuration.json"
+      }
+    ],
+    "grammars": [
+      {
+        "language": "brainwave",
+        "scopeName": "source.brainwave",
+        "path": "./syntaxes/brainwave.tmLanguage.json"
+      }
+    ],
+    "snippets": [
+      {
+        "language": "brainwave",
+        "path": "./snippets/brainwave.json"
+      }
+    ]
+  }
+}

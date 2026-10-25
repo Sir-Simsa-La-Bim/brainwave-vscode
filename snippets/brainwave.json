@@ -1,0 +1,86 @@
+{
+  "Brainwave function": {
+    "prefix": "def",
+    "body": [
+      "def ${1:functionName}(${2:byte input}) -> (${3:byte output})",
+      "{",
+      "    entry {",
+      "        ${4:work} <= (${5:input}, 0);",
+      "    }",
+      "",
+      "    code {",
+      "        goto(${4:work});",
+      "        ${0}",
+      "    }",
+      "",
+      "    exit {",
+      "        ${4:work} => (${6:output}, ?);",
+      "    }",
+      "}"
+    ],
+    "description": "Create a Brainwave function with entry, code, and exit sections"
+  },
+  "Entry block": {
+    "prefix": "block",
+    "body": [
+      "${1:work} <= (${2:?});"
+    ],
+    "description": "Declare an entry block"
+  },
+  "Exit block": {
+    "prefix": "result",
+    "body": [
+      "${1:work} => (${2:?});"
+    ],
+    "description": "Describe a block at exit"
+  },
+  "Preserved block": {
+    "prefix": "preserved",
+    "body": [
+      "${1:work} => preserved;"
+    ],
+    "description": "Assert that a block is preserved"
+  },
+  "Goto cell": {
+    "prefix": "goto",
+    "body": [
+      "goto(${1:work}${2:[0]});"
+    ],
+    "description": "Move the data pointer to a block cell"
+  },
+  "Pointer hint": {
+    "prefix": "hint",
+    "body": [
+      "hint(${1:work}${2:[0]});"
+    ],
+    "description": "Assert the current pointer location"
+  },
+  "Unsigned integer literal": {
+    "prefix": "uint",
+    "body": [
+      "u${1:16}(${2:0})"
+    ],
+    "description": "Little-endian unsigned multi-cell integer"
+  },
+  "Signed integer literal": {
+    "prefix": "sint",
+    "body": [
+      "i${1:16}(${2:0})"
+    ],
+    "description": "Little-endian signed multi-cell integer"
+  },
+  "ASCII literal": {
+    "prefix": "ascii",
+    "body": [
+      "ascii(\"${1:text}\")"
+    ],
+    "description": "ASCII byte sequence"
+  },
+  "UTF-8 literal": {
+    "prefix": "utf8",
+    "body": [
+      "utf8(\"${1:text}\")"
+    ],
+    "description": "UTF-8 byte sequence"
+  }
+}

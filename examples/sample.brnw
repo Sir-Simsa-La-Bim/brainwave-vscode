@@ -1,0 +1,18 @@
+def addByte(byte a, byte b) -> (byte sum)
+{
+    entry {
+        work <= (a, b, 0, ascii('OK'), u16(0x1234));
+    }
+
+    code {
+        goto(work);
+        [->2+<2]
+        >[->+<]
+
+        // Brainfuck symbols in comments are ignored: [>+<-]
+    }
+
+    exit {
+        work => (0, 0, sum, ascii('OK'), u16(0x1234));
+    }
+}

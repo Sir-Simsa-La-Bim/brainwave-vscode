@@ -1,0 +1,200 @@
+{
+  "$schema": "https://raw.githubusercontent.com/martinring/tmlanguage/master/tmlanguage.json",
+  "name": "Brainwave",
+  "scopeName": "source.brainwave",
+  "patterns": [
+    {
+      "include": "#comments"
+    },
+    {
+      "include": "#strings"
+    },
+    {
+      "include": "#functionDeclaration"
+    },
+    {
+      "include": "#directives"
+    },
+    {
+      "include": "#sectionKeywords"
+    },
+    {
+      "include": "#typesAndConstructors"
+    },
+    {
+      "include": "#namespaces"
+    },
+    {
+      "include": "#specialValues"
+    },
+    {
+      "include": "#numbers"
+    },
+    {
+      "include": "#layoutOperators"
+    },
+    {
+      "include": "#brainfuck"
+    }
+  ],
+  "repository": {
+    "comments": {
+      "patterns": [
+        {
+          "name": "comment.block.brainwave",
+          "begin": "/\\*",
+          "end": "\\*/"
+        },
+        {
+          "name": "comment.line.double-slash.brainwave",
+          "match": "//.*$"
+        },
+        {
+          "name": "comment.line.number-sign.brainwave",
+          "match": "#.*$"
+        }
+      ]
+    },
+    "strings": {
+      "patterns": [
+        {
+          "name": "string.quoted.double.brainwave",
+          "begin": "\"",
+          "end": "\"",
+          "patterns": [
+            {
+              "name": "constant.character.escape.brainwave",
+              "match": "\\\\(?:[\\\\'\"0nrt]|x[0-9A-Fa-f]{2}|u[0-9A-Fa-f]{4}|U[0-9A-Fa-f]{8})"
+            }
+          ]
+        },
+        {
+          "name": "string.quoted.single.brainwave",
+          "begin": "'",
+          "end": "'",
+          "patterns": [
+            {
+              "name": "constant.character.escape.brainwave",
+              "match": "\\\\(?:[\\\\'\"0nrt]|x[0-9A-Fa-f]{2}|u[0-9A-Fa-f]{4}|U[0-9A-Fa-f]{8})"
+            }
+          ]
+        }
+      ]
+    },
+    "functionDeclaration": {
+      "patterns": [
+        {
+          "match": "\\b(def)\\s+([A-Za-z_][A-Za-z0-9_]*)",
+          "captures": {
+            "1": {
+              "name": "storage.type.function.brainwave"
+            },
+            "2": {
+              "name": "entity.name.function.brainwave"
+            }
+          }
+        }
+      ]
+    },
+    "sectionKeywords": {
+      "patterns": [
+        {
+          "name": "keyword.control.section.brainwave",
+          "match": "\\b(?:entry|code|exit)\\b"
+        }
+      ]
+    },
+    "directives": {
+      "patterns": [
+        {
+          "name": "support.function.directive.brainwave",
+          "match": "\\b(?:goto|hint)\\b(?=\\s*\\()"
+        }
+      ]
+    },
+    "typesAndConstructors": {
+      "patterns": [
+        {
+          "name": "storage.type.brainwave",
+          "match": "\\bbyte\\b"
+        },
+        {
+          "name": "support.function.constructor.brainwave",
+          "match": "\\b(?:u|i)[0-9]+(?=\\s*\\()"
+        },
+        {
+          "name": "support.function.constructor.brainwave",
+          "match": "\\b(?:float16|float32|float64|ascii|utf8)(?=\\s*\\()"
+        }
+      ]
+    },
+    "namespaces": {
+      "patterns": [
+        {
+          "name": "support.type.namespace.brainwave",
+          "match": "\\b(?:in|out)(?=\\.)"
+        }
+      ]
+    },
+    "specialValues": {
+      "patterns": [
+        {
+          "name": "constant.language.unknown.brainwave",
+          "match": "\\?"
+        },
+        {
+          "name": "constant.language.brainwave",
+          "match": "\\b(?:preserved|inf|nan)\\b"
+        }
+      ]
+    },
+    "numbers": {
+      "patterns": [
+        {
+          "name": "constant.numeric.hex.brainwave",
+          "match": "(?<![A-Za-z0-9_])-?0x[0-9A-Fa-f]+\\b"
+        },
+        {
+          "name": "constant.numeric.binary.brainwave",
+          "match": "(?<![A-Za-z0-9_])-?0b[01]+\\b"
+        },
+        {
+          "name": "constant.numeric.float.brainwave",
+          "match": "(?<![A-Za-z0-9_])-?(?:[0-9]+\\.[0-9]*|\\.[0-9]+|[0-9]+[eE][+-]?[0-9]+)(?:[eE][+-]?[0-9]+)?\\b"
+        },
+        {
+          "name": "constant.numeric.integer.brainwave",
+          "match": "(?<![A-Za-z0-9_])-?[0-9]+\\b"
+        }
+      ]
+    },
+    "layoutOperators": {
+      "patterns": [
+        {
+          "name": "keyword.operator.layout.brainwave",
+          "match": "<=|=>|->"
+        }
+      ]
+    },
+    "brainfuck": {
+      "patterns": [
+        {
+          "name": "keyword.control.loop.brainwave",
+          "match": "[\\[\\]]"
+        },
+        {
+          "name": "keyword.operator.pointer.brainwave",
+          "match": "[<>][0-9]*"
+        },
+        {
+          "name": "keyword.operator.arithmetic.brainwave",
+          "match": "[+-][0-9]*"
+        },
+        {
+          "name": "support.function.io.brainwave",
+          "match": "[.,]"
+        }
+      ]
+    }
+  }
+}
